@@ -6,10 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERP Front Page</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling for your content */
+        .blur {
+            background-image: url('background-image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            
+        }
+
+       
+
+        
+
+        .intro {
+            text-align: center;
+            color: #450550aa;
+            margin-top: 20px;
+        }
+
+        .button {
+            box-sizing: border-box;
+            background-color: #d167e4;
+            margin: 20px auto;
+            display: block;
+            width: 137px;
+            font-size: 22px;
+            border-radius: 10px;
+            height: 42px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+        }
+
+       
+
+        /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .animated-box {
+                margin-top: 50px;
+            }
+
+            h3,
+            h1 {
+                font-size: 24px;
+            }
+
+            .intro {
+                font-size: 16px;
+            }
+
+            .button {
+                font-size: 18px;
+                width: 120px;
+                height: 36px;
+            }
+        }
+
+       
+        
+
+        .button:hover {
+            background-color: #a24ab8;
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 768px) {
+            .button {
+                font-size: 18px;
+                width: 120px;
+                height: 36px;
+            }
+        }
+           .animated-box {
+            font-family: "Roboto", sans-serif;
+            font-size: 64px;
+            font-weight: 600;
+            color: transparent;
+            background-image: linear-gradient(
+                to right,
+                #a05bd1,
+                #940b92,
+                #da0c81,
+                #e95793
+            );
+            background-clip: text;
+            text-align: center;
+            animation: text-write 5s linear infinite;
+        }
+
+        @keyframes text-write {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
     <main>
         <div class="blur">
             <section id="animation-container">
@@ -19,22 +118,13 @@
                 </div>
                 <div class="intro">
                     ERP KIT represents the erp of the college of Kanpur Institute of Technology and is affiliated with
-                    Dr.A.P.J.ABDUL
-                    KALAM UNIVERSITY
+                    Dr.A.P.J.ABDUL KALAM UNIVERSITY
                 </div>
-                <a class="button" href="index2.html" style="box-sizing: border-box;
-  background-color: #d167e4;
-  margin-left: 670px;
-  width: 137px;
-  font-size: 22px;
-  border-radius: 10px;
-  height: 42px;
-  text-decoration: none;">Lets Go!</a>
-            </section>
+                <a class="button" href="index2.html">Let's Go!</a>
 
+            </section>
         </div>
     </main>
-
 </body>
 
 </html>
