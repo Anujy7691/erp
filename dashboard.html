@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Sidebar styles */
+        body {
+            background-image: url('your-image-url.jpg');
+            /* Replace with your image URL or local path */
+            background-size: cover;
+            /* Adjust to your preference */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-color: whitesmoke;
+        }
+
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.3s;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+            color: #fff;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        .navbar {
+            background-color: #34d2e6;
+            padding: 10px;
+            box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            background-color: #34d2e6;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Style for active link */
+        .navbar a.active {
+            background-color: #4CAF50;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .open-button {
+            background-color: #34d2e6;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 10px;
+            cursor: pointer;
+        }
+
+        /* Add a close button for the sidebar */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Style for the "info" div */
+        .info {
+            margin-left: 270px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 57px;
+            margin-right: 57px;
+            margin-left: 57px;
+            display: flex;
+            flex-direction: column;
+            line-height: 15px;
+
+        }
+
+        .info:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .attendance {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 57px;
+            margin-right: 165px;
+            margin-left: 165px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .attendance:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .timetable {
+            background-color: white;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 20px;
+            margin-top: 57px;
+            margin-right: 57px;
+            margin-left: 57px;
+        }
+
+        .timetable:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #9EDDFF;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #BEFFF7;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Add these styles to your existing CSS */
+        .classmates-container {
+            border: 0px solid #333;
+            padding: 20px;
+            width: 300px;
+            margin: 57px 0px 0px 100px;
+            text-align: left;
+            border-radius: 10px;
+            background-color: #fff;
+
+        }
+
+        .classmates-container:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .classmates-heading {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .classmates-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .classmate-item {
+            font-size: 18px;
+            margin: 5px 0;
+            background-color: #34d2e6;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .classmate-item:hover {
+            background-color: #007BFF;
+        }
+
+
+
+        .calendar-box {
+            border: 0px solid #333;
+            padding: 57px;
+            text-align: center;
+            display: grid;
+            width: 320px;
+            border-radius: 10px;
+            margin: -392px 0px 0px 915px;
+            background-color: white;
+
+
+        }
+
+        .calendar-box:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .calendar {
+            text-align: start;
+        }
+
+        .calendar table {
+            display: inline-block;
+        }
+
+        .calendar table {
+            width: 200px;
+            border-collapse: collapse;
+            margin: 10px;
+        }
+
+        .calendar th,
+        .calendar td {
+            border: 1px solid black;
+        }
+
+        .calendar th {
+            background-color: #6499E9;
+        }
+
+        .month-nav {
+            text-align: center;
+        }
+
+        .month-nav a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .record-box {
+            border: 0px solid #000;
+            padding: 20px;
+            margin: 57px 57px 0px 57px;
+            border-radius: 10px;
+            background-color: white;
+
+        }
+
+        .record-box:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #6499E9;
+        }
+
+        tr:nth-child(even) {
+            background-color: #9EDDFF;
+        }
+
+        .mixup {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .sidebar a {
+                padding: 15px;
+                font-size: 16px;
+            }
+
+            .navbar a {
+                float: none;
+            }
+
+            /* .info {
+                margin-left: 0;
+            } */
+
+            .mixup {
+                flex-direction: column;
+            }
+        }
+
+        /* Add these styles to your existing CSS */
+        .theme-toggle {
+            text-align: center;
+            margin-top: auto;
+            /* Push it to the bottom of the sidebar */
+            padding: 10px;
+        }
+
+        .theme-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .theme-label input {
+            display: none;
+            /* Hide the input element */
+        }
+
+        .theme-label i {
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="navbar">
+        <button class="open-button" onclick="openNav()">&#9776; Open Sidebar</button>
+        <a href="https://erp.kit.ac.in/Submit-Grievance?title=Submit%20Grievance&fi=1126517243">Grievance</a>
+        <a href="faq.html">
+            <i class="fas fa-question-circle"></i> FAQ
+        </a>
+
+    </div>
+
+    <div class="sidebar" id="mySidebar">
+        <span class="close-button" onclick="closeNav()">&times;</span>
+        <a href="#">Dashboard</a>
+        <a href="https://erp.kit.ac.in/Dashboard?title=Dashboard&fi=11265171#">students</a>
+        <a href="https://erp.kit.ac.in/Dashboard?title=Dashboard&fi=11265171#">Online Registration</a>
+        
+
+        
+
+    </div>
+
+    <div class="info">
+
+        <img src="info.jpg" alt="Your Photo" style="width: 100px; height: 100px; border-radius: 10px;width: 299px;
+    height: 299px;
+    border-radius: 203px;
+    margin-top: 25px;
+    margin-bottom: -201px;
+    margin-left: 144px;">
+
+        <h1 style="font-size: 24px; text-align: right; margin-bottom: 10px;margin-right: 200px; color: #333;">ANUJ YADAV</h1>
+        <p style="font-size: 18px; text-align: right; line-height: 1.5; margin-bottom: 20px;margin-right: 200px; color: #555;">
+            Program: B.Tech.<br>
+            Branch: CS<br>
+            Semester: 3<br>
+            Registration Code: 221813<br>
+            Roll No (URN): 2201650100032
+        </p>
+    </div>
+
+    <div class="attendance">
+        <canvas id="attendancePieChart"
+            style="display: flex; flex-direction: column; box-sizing: border-box; height: 336px; width: 100%;">
+        </canvas>
+    </div>
+
+
+    <div class="timetable">
+        <h2>Weekly Timetable</h2>
+        <table>
+            <tr>
+                <th>DAY</th>
+                <th>09:10 AM - 10:05 AM</th>
+                <th>10:05 AM - 11:00 AM</th>
+                <th>11:05 AM - 12:00 PM</th>
+                <th>12:00 PM - 01:00 PM</th>
+                <th>01:00 PM - 01:45 PM</th>
+                <th>01:45 PM - 02:30 PM</th>
+                <th>02:30 PM - 03:15 PM</th>
+                <th>03:20 PM - 04:05 PM</th>
+                <th>04:05 PM - 04:50 PM</th>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td>D. Structures & Logic</td>
+                <td>MATHS-IV</td>
+                <td>Comp. Organization</td>
+                <td>LUNCH</td>
+                <td>Data Structures Lab</td>
+                <td>Data Structures Lab</td>
+                <td>Python Programming Lab</td>
+                <td>Python Programming Lab</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>D. Structures & Logic</td>
+                <td>Data Structures</td>
+                <td>Python Programming</td>
+                <td>LUNCH</td>
+                <td>Web Designing Workshop</td>
+                <td>Comp. Organization Lab</td>
+                <td>Comp. Organization Lab (Secondary Staff)</td>
+                <td>Web Designing Workshop (Secondary Staff)</td>
+                <td>Comp. Organization</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>Data Structures</td>
+                <td>Python Programming</td>
+                <td>D. Structures & Logic</td>
+                <td>LUNCH</td>
+                <td>Comp. Organization</td>
+                <td>MATHS-IV</td>
+                <td>Data Structures Lab</td>
+                <td>Data Structures Lab</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>D. Structures & Logic</td>
+                <td>Comp. Organization</td>
+                <td>Data Structures</td>
+                <td>LUNCH</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>D. Structures & Logic</td>
+                <td>Comp. Organization</td>
+                <td>Python Programming</td>
+                <td>LUNCH</td>
+                <td>Data Structures Lab</td>
+                <td>D. Structures & Logic</td>
+                <td>UNIVERSAL HUMAN VALUES</td>
+                <td>COMPUTER ORGANISATION AND ARCHITECTURE LAB
+                    (BCS352)</td>
+                <td>COMPUTER ORGANISATION AND ARCHITECTURE LAB
+                    (BCS352)</td>
+            </tr>
+        </table>
+    </div>
+    <div class="mixup">
+
+        <div id="classmates-container" class="classmates-container">
+            <h2 class="classmates-heading">Classmates:</h2>
+            <ul id="classmates-list" class="classmates-list">
+                <li class="classmate-item"><i class="fas fa-male"></i> Ms. KHUSHI YADAV</li>
+                <li class="classmate-item"><i class="fas fa-male"></i> Mr. SANJEET CHODHRY</li>
+                <li class="classmate-item"><i class="fas fa-male"></i> Mr. VARUN GUPTA</li>
+                <li class="classmate-item"><i class="fas fa-female"></i> Mr. VISHAL SINGH</li>
+                <li class="classmate-item"><i class="fas fa-female"></i> Mr. AAYUSH SHARMA</li>
+                <li class="classmate-item"><i class="fas fa-male"></i> Mr. ABHIJEET YADAV</li>
+                <!-- Add all the names here -->
+            </ul>
+        </div>
+
+
+
+        <div class="calendar-box">
+            <h1 style="margin-left: -3px;
+    margin-top: -36px;
+    flex-direction: col">Calendar:</h1>
+            <div class="calendar">
+                <div class="month-nav">
+                    <a id="prevMonth" onclick="changeMonth(-1)">&#9664; Previous</a>
+                    <span id="currentMonth">October 2023</span>
+                    <a id="nextMonth" onclick="changeMonth(1)">Next &#9654;</a>
+                </div>
+                <table id="calendarTable">
+                    <!-- Your calendar table for the current month goes here -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="record-box">
+        <h1>Student Performance Record: Practical</h1>
+        <table>
+            <tr>
+                <th>S.NO.</th>
+                <th>SUBJECT NAME</th>
+                <th>ATTENDANCE (%)</th>
+                <th>CLASS TEST</th>
+                <th>CLASS TEST 1 MARKS OBTAIN</th>
+
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>COMPUTER ORGANISATION AND ARCHITECTURE LAB (BCS352)</td>
+                <td>66</td>
+                <td>NA</td>
+                <td>NA</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>DATA STRUCTURES USING C LAB (KCS351)</td>
+                <td>65</td>
+                <td>NA</td>
+                <td>NA</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>DATA STRUCTURES USING C LAB (BCS351)</td>
+                <td>64</td>
+                <td>NA</td>
+                <td>NA</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>INTERNSHIP ASSESMENT / MINI PROJECT (BCC351)</td>
+                <td>0</td>
+                <td>NA</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>ONLINE CERTIFICATION COURSE (OCC)</td>
+                <td>55</td>
+                <td>NA</td>
+                <td>NA</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>WEB DESIGNING WORKSHOP (BCS353)</td>
+                <td>94</td>
+                <td>NA</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>TOTAL</td>
+                <td></td>
+                <td>45 %</td>
+                <td>0</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>PERCENTAGE</td>
+                <td></td>
+                <td>45 %</td>
+                <td>0.00</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+
+
+    <script>
+        // JavaScript to open and close the sidebar
+        function openNav() {
+            document.getElementById("mySidebar").style.left = "0";
+            // Shift the info div when the sidebar is open
+            document.querySelector(".info").style.marginLeft = "270px"; // Adjust this value to match your sidebar width
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.left = "-250px";
+            // Reset the info div when the sidebar is closed
+            document.querySelector(".info").style.marginLeft = "0";
+        }
+
+        // Sample attendance data (you can replace this with your actual data)
+        const totalPresent = 150;
+        const totalAbsent = 50;
+
+        // Calculate percentages
+        const totalLectures = totalPresent + totalAbsent;
+        const presentPercentage = (totalPresent / totalLectures) * 100;
+        const absentPercentage = (totalAbsent / totalLectures) * 100;
+
+        // Get the canvas element for the pie chart
+        const pieChartCanvas = document.getElementById('attendancePieChart').getContext('2d');
+
+        // Create the pie chart
+        const attendancePieChart = new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: {
+                labels: ['Present', 'Absent'],
+                datasets: [{
+                    data: [presentPercentage, absentPercentage],
+                    backgroundColor: ['#34d2e6', '#FF5733'], // Colors for present and absent
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const labelIndex = context.dataIndex;
+                                if (labelIndex === 0) {
+                                    return `Present: ${totalPresent} (${presentPercentage}%)`;
+                                } else if (labelIndex === 1) {
+                                    return `Absent: ${totalAbsent} (${absentPercentage}%)`;
+                                }
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+
+        // Define the names as an array
+        var classmates = [
+
+            // Add all the names here
+        ];
+
+        // Function to add names to the "classmates-list" ul
+        function displayClassmates() {
+            var classmatesList = document.getElementById("classmates-list");
+
+            // Loop through the classmates array and create list items
+            for (var i = 0; i < classmates.length; i++) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(classmates[i]));
+                classmatesList.appendChild(li);
+            }
+        }
+
+        // Call the function to display names when the page loads
+        window.onload = displayClassmates;
+
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let currentMonth = 9; // October is index 9
+        let currentYear = 2023;
+
+        function updateCalendar() {
+            const table = document.getElementById("calendarTable");
+            const currentMonthElement = document.getElementById("currentMonth");
+            table.innerHTML = ""; // Clear the table
+
+            // Create a new calendar table for the current month
+            const header = document.createElement("tr");
+            for (let day = 0; day < 7; day++) {
+                const th = document.createElement("th");
+                th.textContent = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][day];
+                header.appendChild(th);
+            }
+            table.appendChild(header);
+
+            // Get the first day of the month
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+            // Number of days in the month
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            let date = 1;
+            for (let i = 0; i < 6; i++) {
+                if (date > daysInMonth) {
+                    break;
+                }
+                const row = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    const td = document.createElement("td");
+                    if (i === 0 && j < firstDay) {
+                        // Empty cells before the first day
+                        td.textContent = "";
+                    } else {
+                        // Fill cells with dates
+                        if (date <= daysInMonth) {
+                            td.textContent = date;
+                        }
+                        date++;
+                    }
+                    row.appendChild(td);
+                }
+                table.appendChild(row);
+            }
+            currentMonthElement.textContent = `${months[currentMonth]} ${currentYear}`;
+        }
+
+        function changeMonth(step) {
+            currentMonth += step;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateCalendar();
+        }
+
+        // Initial calendar rendering
+        updateCalendar();
+
+
+      
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("https://images.collegedunia.com/public/college_data/images/appImage/14999396711443303910363113831558922378488043446123029n.jpg?h=160&w=320&mode=stretch"); /* Add your background image URL or local path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+main {
+  text-align: center;
+  padding: 20px;
+}
+
+.blur {
+  margin: 0px;
+}
+#animation-container {
+  display: flex;
+  justify-content: center;
+
+  height: 710px;
+  flex-direction: column;
+}
+
+.animated-box {
+  font-family: "Roboto", sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    #a05bd1,
+    #940b92,
+    #da0c81,
+    #e95793
+  );
+
+  .animated-box h3 {
+    line-height: 40px;
+  }
+
+  .animated-box h1 {
+    margin-top: 147px;
+  }
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: center;
+  animation: text-write 5s linear infinite;
+}
+
+@keyframes text-write {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.intro {
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 36px;
+  margin: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .animated-box {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-box {
+    font-size: 32px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.blur {
+  backdrop-filter: blur(10px);
+}
